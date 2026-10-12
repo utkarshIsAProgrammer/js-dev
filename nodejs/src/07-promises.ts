@@ -24,7 +24,7 @@ const users: User[] = [
   },
 ];
 
-function fetchUser(userId: number): Promise<User> {
+export function fetchUser(userId: number): Promise<User> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const user = users.find((currentUser) => currentUser.id === userId);

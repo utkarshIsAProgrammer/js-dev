@@ -24,6 +24,10 @@
     // Allows default imports from CommonJS modules
     "esModuleInterop": true,
 
+    // Allows importing .ts extension
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+
     // Skip type-checking of declaration files in node_modules
     "skipLibCheck": true,
 
