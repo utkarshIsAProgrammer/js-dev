@@ -1,2 +1,2 @@
 Hello, sync file system!
-Append using file sync!
+Append using sync API!
