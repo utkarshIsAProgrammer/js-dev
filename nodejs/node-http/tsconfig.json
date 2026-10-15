@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    // JavaScript version to compile TypeScript into
+    "target": "ES2022",
+
+    // Tells TypeScript to include Node.js type definitions
+    "types": ["node"],
+
+    // Use Node.js's modern ESM module system
+    "module": "NodeNext",
+
+    // Resolve imports the same way Node.js does
+    "moduleResolution": "NodeNext",
+
+    // Directory containing your TypeScript source files
+    "rootDir": "./src",
+
+    // Directory where compiled JavaScript files will be generated
+    "outDir": "./dist",
+
+    // Enable strict type-checking
+    "strict": true,
+
+    // Allows default imports from CommonJS modules
+    "esModuleInterop": true,
+
+    // Allows importing .ts extension
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+
+    // Skip type-checking of declaration files in node_modules
+    "skipLibCheck": true,
+
+    // Generate .d.ts type declaration files
+    "declaration": true,
+
+    // Show errors for unused local variables
+    "noUnusedLocals": true,
+
+    // Show errors for unused function parameters
+    "noUnusedParameters": true,
+
+    // Make sure file-name casing is consistent
+    "forceConsistentCasingInFileNames": true,
+  },
+
+  // Only compile TypeScript files inside src
+  "include": ["src/**/*.ts"],
+
+  // Don't compile these directories
+  "exclude": ["node_modules", "dist"],
+}
