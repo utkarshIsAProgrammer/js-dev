@@ -1,0 +1,5 @@
+import { Router } from "express";
+import { healthRouter } from "./health.routes.ts";
+
+export const apiRouter = Router();
+apiRouter.use(healthRouter);
