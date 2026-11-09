@@ -25,7 +25,7 @@ export const createTask = async (
   return result.rows[0];
 };
 
-export const fetchTasksByUserId = async (userId: string): Promise<Task[]> => {
+export const fetchTaskByUserId = async (userId: string): Promise<Task[]> => {
   const result = await pool.query<Task>(
     `
     SELECT
@@ -47,9 +47,6 @@ export const fetchTasksByUserId = async (userId: string): Promise<Task[]> => {
 
   return result.rows;
 };
-
-// Alias for backwards compatibility
-export const fetchTaskByUserId = fetchTasksByUserId;
 
 export const findTaskById = async (
   taskId: string,
@@ -101,4 +98,21 @@ export const updateTaskTitle = async (
     [title, taskId, userId],
   );
   return result.rows[0] ?? null;
+};
+
+export const deleteTask = async (
+  taskId: string,
+  userId: string,
+): Promise<boolean> => {
+  const result = await pool.query(
+    `
+DELETE FROM support_tasks
+WHERE
+  id = $1
+  AND user_id = $2
+`,
+    [taskId, userId],
+  );
+
+  return (result.rowCount ?? 0) > 0;
 };

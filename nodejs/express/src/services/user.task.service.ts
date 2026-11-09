@@ -1,7 +1,8 @@
 import { AppError } from "../errors/AppError.ts";
 import {
   createTask,
-  fetchTasksByUserId,
+  deleteTask,
+  fetchTaskByUserId,
   findTaskById,
   updateTaskTitle,
 } from "../repositories/user.task.repository.ts";
@@ -28,11 +29,9 @@ export const createUserTask = async (
   return createTask(userId, validTitle);
 };
 
-export const getUserTasks = async (userId: string): Promise<Task[]> => {
-  return fetchTasksByUserId(userId);
+export const getUserTask = async (userId: string): Promise<Task[]> => {
+  return fetchTaskByUserId(userId);
 };
-
-export const getUserTask = getUserTasks;
 
 export const getUserTaskById = async (
   taskId: string,
@@ -60,4 +59,12 @@ export const updateUserTaskById = async (
   return task;
 };
 
-export const updateUserTask = updateUserTaskById;
+export const deleteUserTask = async (
+  taskId: string,
+  userId: string,
+): Promise<void> => {
+  const deleted = await deleteTask(taskId, userId);
+  if (!deleted) {
+    throw new AppError(404, "Task not found!");
+  }
+};
